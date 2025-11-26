@@ -1,0 +1,29 @@
+# Ambientes Virtuais
+venv/
+*.venv
+env/
+.env
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache do Pytest
+.pytest_cache/
+
+# Relatórios
+# Ignora todo o conteúdo do diretório de relatórios, exceto o .gitkeep
+reports/*
+!reports/.gitkeep
+
+# Binários de Drivers
+drivers/
+
+# Arquivos de Log
+*.log
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
