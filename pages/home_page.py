@@ -3,6 +3,7 @@ from pages.forms_page import FormsPage
 from pages.alert_frame_and_windows_page import AlertFrameAndWindowsPage
 from pages.elements_page import ElementsPage
 from pages.widgets_page import WidgetsPage
+from pages.interactions_page import InteractionsPage
 from selenium.webdriver.common.by import By
 
 class HomePage(BasePage):
@@ -14,6 +15,7 @@ class HomePage(BasePage):
     _windows_card = (By.XPATH, "//h5[text()='Alerts, Frame & Windows']")
     _elements_card = (By.XPATH, "//h5[text()='Elements']")
     _widgets_card = (By.XPATH, "//h5[text()='Widgets']")
+    _interactions_card = (By.XPATH, "//h5[text()='Interactions']")
  
     def __init__(self, driver, config):
         """
@@ -42,6 +44,13 @@ class HomePage(BasePage):
         """
         self._click(self._windows_card)
         return AlertFrameAndWindowsPage(self.driver, self.config)
+
+    def click_interaction_card(self):
+        """
+        Clicks the 'Interactions' card on the home page.
+        """
+        self._click(self._interactions_card)
+        return InteractionsPage(self.driver, self.config)
 
     def click_elements_card(self):
         """
