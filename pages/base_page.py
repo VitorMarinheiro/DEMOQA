@@ -22,6 +22,12 @@ class BasePage:
         """
         return self.driver.find_element(*locator)
 
+    def _finds(self, locator):
+        """
+        Finds all element on the page.
+        """
+        return self.driver.find_elements(*locator)
+
     def _click(self, locator):
         """
         Clicks an element on the page.
