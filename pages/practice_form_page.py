@@ -127,6 +127,7 @@ class PracticeFormsPage(BasePage):
         self._click((self._date_of_birth_day_div[0], (self._date_of_birth_day_div[1]).replace("day", form_data['birth_day'])))
         
         # Subjects
+        self.scroll_to_element(self._hobbies_sports_check)
         self._click(self._subject_input)
         self._type(self._subject_input, form_data['subject'])
         time.sleep(0.2)
