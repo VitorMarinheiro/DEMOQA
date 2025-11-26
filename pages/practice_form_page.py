@@ -76,14 +76,6 @@ class PracticeFormsPage(BasePage):
         
         time.sleep(0.3)
         
-    def scroll_to_element(self, locator):
-        """
-        Scroll down to an element using a padding of 350px.
-        """
-        y = self._find(locator).location['y']
-        self.driver.execute_script(f"window.scrollTo(0, {y - 350});")
-        time.sleep(1)
-        
     def _read_input_data(self):
         """
         Reads the input data from the input_values.txt file.
