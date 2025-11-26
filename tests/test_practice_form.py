@@ -3,9 +3,9 @@ from pages.home_page import HomePage
 import time
 
 @pytest.mark.usefixtures("driver", "config")
-class TestHome:
+class TestPracticeForm:
     """
-    Test suite for the home page.
+    Test suite for the forms.
     """
 
     def test_practice_form(self, driver, config):
