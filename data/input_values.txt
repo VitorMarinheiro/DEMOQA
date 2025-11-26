@@ -1,0 +1,14 @@
+first_name: vitor
+last_name: marinheiro
+user_email: vitor.marinheiro@teste.com
+gender: Male
+user_number: 8199999999
+birth_year: 1994
+birth_month: August
+birth_day: 16
+subject: Computer Science
+hobbies: Sports, Reading
+current_address: Address Now
+state: NCR
+city: Noida
+image: image_icon.png
