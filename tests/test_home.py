@@ -1,5 +1,6 @@
 import pytest
 from pages.home_page import HomePage
+import time
 
 @pytest.mark.usefixtures("driver", "config")
 class TestHome:
@@ -7,11 +8,17 @@ class TestHome:
     Test suite for the home page.
     """
 
-    def test_page_title(self, driver, config):
+    def test_practice_form(self, driver, config):
         """
-        Tests if the home page title is correct.
+        Tests the practice_from flow.
         """
-        home_page = HomePage(driver)
-        home_page.go_to(config["base_url"])
-        title = home_page.get_tab_title()
-        assert title == "DEMOQA"
+        home_page = HomePage(driver, config)
+        home_page.validate_page_url()
+        
+        forms_page = home_page.click_forms_card()
+        forms_page.validate_page_url()
+        
+        practice_froms_page = forms_page.click_practice_forms_menu()
+        practice_froms_page.validate_page_url()
+        practice_froms_page.fill_form()
+        practice_froms_page.validate_popup()
