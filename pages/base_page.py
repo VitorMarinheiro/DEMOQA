@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+import time
 
 class BasePage:
     """
@@ -49,6 +50,21 @@ class BasePage:
         self.wait.until(EC.visibility_of_element_located(locator))
         return self._find(locator).text
     
+    def _get_property(self, locator, property):
+        """
+        Gets the property of an element.
+        """
+        self.wait.until(EC.visibility_of_element_located(locator))
+        return self._find(locator).get_attribute(property)
+
+    def scroll_to_element(self, locator):
+        """
+        Scroll down to an element using a padding of 350px.
+        """
+        y = self._find(locator).location['y']
+        self.driver.execute_script(f"window.scrollTo(0, {y - 350});")
+        time.sleep(1)
+        
     def get_current_url(self):
         """
         Returns the current URL of the page.
