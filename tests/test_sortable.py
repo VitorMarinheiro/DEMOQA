@@ -2,6 +2,7 @@ import pytest
 from pages.home_page import HomePage
 import time
 
+@pytest.mark.sortable
 @pytest.mark.usefixtures("driver", "config")
 class TestSortable:
     """

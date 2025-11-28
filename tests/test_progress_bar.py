@@ -1,6 +1,7 @@
 import pytest
 from pages.home_page import HomePage
 
+@pytest.mark.progress_bar
 @pytest.mark.usefixtures("driver", "config")
 class TestProgressBar:
     """

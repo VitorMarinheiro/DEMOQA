@@ -1,5 +1,7 @@
+import pytest
 import requests
 
+@pytest.mark.bookstore_api
 def test_bookstore_workflow(config, user_data):
     """
     Tests the full bookstore API workflow:

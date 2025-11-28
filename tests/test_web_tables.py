@@ -1,6 +1,7 @@
 import pytest
 from pages.home_page import HomePage
 
+@pytest.mark.web_tables
 @pytest.mark.usefixtures("driver", "config")
 class TestWebTables:
     """
