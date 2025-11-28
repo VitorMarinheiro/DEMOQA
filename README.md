@@ -2,6 +2,13 @@
 
 This project contains automated tests for the DEMOQA web application, using Behavior-Driven Development (BDD) with `pytest-bdd` and the Page Object design pattern to organize UI elements and interactions.
 
+## 📝 Developer's note
+I personally prefer not to use _Cucumber_ in test automation frameworks anymore. 
+Using Cucumber in a test automation framework often adds unnecessary complexity, especially when the team already has a good grasp of programming languages and testing best practices. Although Cucumber promises to bring technical and non-technical teams closer together through natural language scenarios, in practice it creates an extra layer of abstraction that needs to be maintained — steps, definitions, glue code, and feature files. This slows down the development flow, increases coupling, and requires more effort to debug problems. In addition, many teams end up writing scenarios that are not really readable for the business, losing the main benefit of the tool. As a result, Cucumber often adds more work than value, while a straightforward pure code framework offers greater clarity, speed, and simplicity in maintenance.
+
+If you prefer an approach without using cucumber, use the `pytest-structure` branch of this repository.
+
+
 ## Technologies Used
 
 *   **Language:** Python
