@@ -20,6 +20,9 @@ class WebTablesPage(BasePage):
     
     _edit_icon = (By.XPATH, "//*[@Title='Edit']")
     _delete_icon = (By.XPATH, "//*[@Title='Delete']")
+    _salary_cell = (By.XPATH, "//div[@class='rt-tr-group'][1]//div[@role='gridcell'][5]")
+    _no_rows_found_message = (By.CLASS_NAME, "rt-noData")
+    _first_row = (By.XPATH, "//div[@class='rt-tr-group'][1]")
     
     
     def __init__(self, driver, config):
@@ -35,17 +38,17 @@ class WebTablesPage(BasePage):
         """
         assert f'{self.config["base_url"]}webtables' == self.get_current_url()
         
-    def add_a_new_register(self):
+    def add_a_new_register(self, firstName="Vitor", lastName="Marinheiro", email="vitor.marinheiro@test.com", age="30", salary="9999", department="IT"):
         """
         Adds a new register to the web table.
         """
         self._click(self._new_register_button)
-        self._type(self._first_name_input, "Vitor")
-        self._type(self._last_name_input, "Marinheiro")
-        self._type(self._user_email_input, "vitor.marinheiro@test.com")
-        self._type(self._age_input, "30")
-        self._type(self._salary_input, "9999")
-        self._type(self._department_input, "IT")
+        self._type(self._first_name_input, firstName)
+        self._type(self._last_name_input, lastName)
+        self._type(self._user_email_input, email)
+        self._type(self._age_input, age)
+        self._type(self._salary_input, salary)
+        self._type(self._department_input, department)
         time.sleep(0.1)
         self._click(self._submit_button)
     
@@ -95,3 +98,21 @@ class WebTablesPage(BasePage):
         for _ in range(11):
             self.delete_register()
             time.sleep(0.1)
+            
+    def search_for(self, text):
+        self._clear(self._search_box_input)
+        self._type(self._search_box_input, text)
+
+    def get_salary_text(self):
+        return self._get_text(self._salary_cell)
+
+    def is_no_rows_message_displayed(self):
+        return self.assert_element_is_visible(self._no_rows_found_message)
+
+    def get_no_rows_message_text(self):
+        return self._get_text(self._no_rows_found_message)
+
+    def get_first_row_text(self):
+        if self.is_element_present(self._first_row):
+            return self._get_text(self._first_row)
+        return None

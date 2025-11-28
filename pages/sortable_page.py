@@ -2,6 +2,7 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+from utils.logger import get_logger
 
 class SortablePage(BasePage):
     """
@@ -16,6 +17,7 @@ class SortablePage(BasePage):
         """
         super().__init__(driver)
         self.config = config
+        self.logger = get_logger(__name__)
 
     def validate_page_url(self):
         """
@@ -31,17 +33,17 @@ class SortablePage(BasePage):
         # Get original Order
         time.sleep(4)
         self.scroll_to_element(self._elements_div)
-        print("=" * 50)
-        print("Original Order")
-        print("=" * 50)
+        self.logger.info("=" * 50)
+        self.logger.info("Original Order")
+        self.logger.info("=" * 50)
         itens = self._finds(self._elements_div)
         for i, item in enumerate(itens):
-            print(f"  Position {i+1}: {item.text}")
+            self.logger.info(f"  Position {i+1}: {item.text}")
         
         # Revert
-        print("\n" + "=" * 50)
-        print("Reverting...")
-        print("=" * 50)
+        self.logger.info("\n" + "=" * 50)
+        self.logger.info("Reverting...")
+        self.logger.info("=" * 50)
         
         actions = ActionChains(self.driver)
         
@@ -62,5 +64,11 @@ class SortablePage(BasePage):
             actions.release().perform()
             time.sleep(0.5)
             
-            print(f"  ✓ Movement {movements+1}/5 done")
+            self.logger.info(f"  ✓ Movement {movements+1}/5 done")
         
+    def get_item_texts(self):
+        """
+        Gets the text of all sortable items.
+        """
+        items = self._finds(self._elements_div)
+        return [item.text for item in items]

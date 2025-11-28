@@ -22,6 +22,10 @@ class WidgetsPage(BasePage):
         """
         Clicks the 'Progress Bar' card on the widgets page.
         """
+        try:
+            self.driver.execute_script("document.getElementById('fixedban').remove();")
+        except:
+            pass # Ignore if the element is not present
         self.scroll_to_element(self._progress_bar_menu)
         self._click(self._progress_bar_menu)
         return ProgressBarPage(self.driver, self.config)
